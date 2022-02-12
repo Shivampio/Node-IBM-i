@@ -1,4 +1,4 @@
-const { SqlCall } = require("itoolkit");
+const { SqlCall } = require('itoolkit')
 
 const addWhereClause = (data) => {
   if (!data) return "";
