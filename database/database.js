@@ -1,12 +1,36 @@
 const express = require("express");
+// const swaggerJsDoc = require("swagger-jsdoc");
+// const swaggerUi = require("swagger-ui-express");
 const connection = require("../connection");
 const { xmlToJson } = require("itoolkit");
 const router = new express.Router();
 const SqlParser = require("../SQL-Parser/SqlParser");
+const { SqlCall } = require('itoolkit')
+// const keycloak = require('../config/keycloak-config.js').getKeycloak();
 
 const sql = new SqlParser("sriram.itmmast");
 
-router.get("/all", (req, res) => {
+const sqlData = (queryString) => {
+  const sql = new SqlCall();
+  sql.prepare(queryString);
+  sql.execute();
+  sql.fetch();
+  sql.free();
+  return sql;
+};
+
+
+/**
+ * @swagger
+ * /test:
+ *  get:
+ *    description: Use to request all customers
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+router.get("/test", (req, res) => {
+  // res.send("Working...")
   connection.add(sql.find());
 
   connection.run((error, xmlOutput) => {
@@ -16,7 +40,36 @@ router.get("/all", (req, res) => {
     const result = xmlToJson(xmlOutput);
     res.send(result);
   });
-});
+})
+
+
+
+router.get("/table", (req, res) => {
+
+  const queryString = `SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('QSYS','PGM SRVPGM','*ALLSIMPLE')) with none`
+
+  connection.add(sqlData(queryString));
+
+  connection.run((error, xmlOutput) => {
+    if (error) {
+      return res.status(500).send({ error });
+    }
+    const result = xmlToJson(xmlOutput);
+    res.send(result);
+  });
+})
+
+// router.get("/all",keycloak.protect('user'), (req, res) => {
+//   connection.add(sql.find());
+
+//   connection.run((error, xmlOutput) => {
+//     if (error) {
+//       return res.status(500).send({ error });
+//     }
+//     const result = xmlToJson(xmlOutput);
+//     res.send(result);
+//   });
+// });
 
 router.get("/:id", (req, res) => {
 
