@@ -75,3 +75,4 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Swagger Stats
 - You can check API statics using [Swagger Stats](http://localhost:3000/swagger-stats)
 
+![image](https://user-images.githubusercontent.com/60472008/153750616-7aef1ce6-f8a1-476f-ad24-e62ad21bb6c1.png)
