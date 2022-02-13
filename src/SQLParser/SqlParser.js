@@ -1,4 +1,4 @@
-const { SqlCall } = require('itoolkit')
+const sqlData = require('./sqlData')
 
 const addWhereClause = (data) => {
   if (!data) return "";
@@ -7,15 +7,6 @@ const addWhereClause = (data) => {
     queryString += ` ${key}='${data[key]}' AND`;
   }
   return queryString.slice(0, -3);
-};
-
-const sqlData = (queryString) => {
-  const sql = new SqlCall();
-  sql.prepare(queryString);
-  sql.execute();
-  sql.fetch();
-  sql.free();
-  return sql;
 };
 
 class SqlParser {
