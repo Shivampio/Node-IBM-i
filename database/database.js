@@ -1,12 +1,12 @@
 const express = require("express");
-// const swaggerJsDoc = require("swagger-jsdoc");
-// const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const connection = require("../connection");
 const { xmlToJson } = require("itoolkit");
 const router = new express.Router();
 const SqlParser = require("../SQL-Parser/SqlParser");
 const { SqlCall } = require('itoolkit')
-// const keycloak = require('../config/keycloak-config.js').getKeycloak();
+const keycloak = require('../config/keycloak-config.js').getKeycloak();
 
 const sql = new SqlParser("sriram.itmmast");
 
@@ -21,7 +21,7 @@ const sqlData = (queryString) => {
 
 
 /**
- * @swagger
+ * @openapi
  * /test:
  *  get:
  *    description: Use to request all customers
@@ -43,12 +43,17 @@ router.get("/test", (req, res) => {
 })
 
 
-
-router.get("/table", (req, res) => {
-
-  const queryString = `SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('QSYS','PGM SRVPGM','*ALLSIMPLE')) with none`
-
-  connection.add(sqlData(queryString));
+/**
+ * @openapi
+ * /all:
+ *  get:
+ *    description: Use to request all customers
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+router.get("/all",keycloak.protect('admin'), (req, res) => {
+  connection.add(sql.find());
 
   connection.run((error, xmlOutput) => {
     if (error) {
@@ -57,21 +62,9 @@ router.get("/table", (req, res) => {
     const result = xmlToJson(xmlOutput);
     res.send(result);
   });
-})
+});
 
-// router.get("/all",keycloak.protect('user'), (req, res) => {
-//   connection.add(sql.find());
-
-//   connection.run((error, xmlOutput) => {
-//     if (error) {
-//       return res.status(500).send({ error });
-//     }
-//     const result = xmlToJson(xmlOutput);
-//     res.send(result);
-//   });
-// });
-
-router.get("/:id", (req, res) => {
+router.get("/:id",keycloak.protect('admin'), (req, res) => {
 
   connection.add(sql.find({ ITEMNO: req.params.id }));
 
@@ -84,7 +77,7 @@ router.get("/:id", (req, res) => {
   });
 });
 
-router.post("/insert", (req, res) => {
+router.post("/insert",keycloak.protect('admin'), (req, res) => {
 
   connection.add(sql.insert(req.body));
 
@@ -98,7 +91,7 @@ router.post("/insert", (req, res) => {
   });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id",keycloak.protect('admin'), (req, res) => {
   connection.add(sql.delete({ ITEMNO: req.params.id }));
 
   connection.run((error, xmlOutput) => {
@@ -111,7 +104,7 @@ router.delete("/:id", (req, res) => {
   });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id",keycloak.protect('admin'), (req, res) => {
 
   connection.add(sql.update(req.body, { ITEMNO: req.params.id }));
 

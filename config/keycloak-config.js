@@ -7,9 +7,9 @@ var keycloakConfig = {
     clientId: 'nodejs-microservice',
     bearerOnly: true,
     serverUrl: 'http://localhost:8080/auth',
-    realm: 'Demo-Realm',
+    realm: 'IBMi-Demo',
     credentials: {
-        secret: 'a4Wo3tDK2ai8hbdCDUjfoL2kWrty97Lr'
+        secret: 'HRTUvrop8FjVqXTpKW0ndBs2VqiG2kwU'
     }
 };
 
