@@ -35,35 +35,43 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 
     $ npm install npm -g
 
+---
+
 ### IBM i Server
 - #### Creating PUB400 Profile
-    PUB400 provide free IBM i server profile. 
-    Please visit - pub400.com
-    
-        
+    - [PUB400](pub400.com) provide free IBM i server profile. 
+    - Create your own profile follow the steps in the link - https://www.geek4tutorial.com/2020/02/how-to-get-free-as400-profile-and.html
+
+    For this demo, I used my test server.   
+
+    You can update your credentials into the `connection.js` file. 
 
 ---
 
-## Install
+### KeyCloak Server
 
-    $ git clone https://shivam_pio@bitbucket.org/shivam_pio/inventory-status.git
-    $ cd inventory-status
-    $ npm install
+   - Keycloak is an open source Identity and Access Management solution targeted towards modern applications and services. Keycloak offers features such as Single-Sign-On (SSO), Identity Brokering and Social Login, User Federation, Client Adapters, an Admin Console, and an Account Management Console.
 
+   - We used KeyCloak for this demo to create tokenized API.
+
+   - Download [KeyCloak](https://www.keycloak.org/downloads)
+
+   - Follow the below links to setup KeyCloak in your system: -
+     - https://medium.com/devops-dudes/keycloak-for-identity-and-access-management-9860a994bf0
+     - https://medium.com/devops-dudes/securing-node-js-express-rest-apis-with-keycloak-a4946083be51
+     - https://medium.com/theoptimaltechnologist/what-is-keycloak-how-to-use-it-an-example-with-nodejs-part-2-46b562e2b46c
+
+---
 
 ## Running the project in development mode
-- To start frontend:
+- To start backend:
 
-        $ npm start
+        $ node index.js
 
-- You also need to run the backend JAVA project if not deployed anywhere. To run backend server follow the documentation of the backend project()
+- Start the KeyCloak Server by running Standalone.sh for Windows(C:\path\keycloak-16.1.1\bin)
 
-- Configure the backend URL as per need in `proxy.conf.json` file.
+---
 
-## Build the project for production
+## Swagger Stats
+- You can check API statics using [Swagger Stats](http://localhost:3000/swagger-stats)
 
-    $ ng build --prod
-
-## Documentation of the application
-
-    $ npm run compdoc
