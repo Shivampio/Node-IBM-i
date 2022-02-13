@@ -1,7 +1,7 @@
 # Node IBMi
 
 ## Node IBMi - Demo developed by Shivam Lohiya.
-This is an demo application in which we connect `NodeJS` with `IBM i` using `itoolkit` package and create APIs aswell we call RPG and CL program. Also, I created one API by which i call work active Job. 
+This is an demo application in which we connect `NodeJS` with `IBM i` using `itoolkit` package and create APIs aswell we can call RPG and CL program. Also, I created one API by which i call work active Job. 
 
 I added `KeyCloak` as OAuth server for tokenized API. 
 
