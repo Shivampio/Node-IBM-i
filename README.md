@@ -31,6 +31,10 @@ Also, I integrate `Sawgger Stats` and `Swagger UI` for better understanding,
 - KeyCloak(Authorization) Token - http://localhost:8080/auth/realms/IBMi-Demo/protocol/openid-connect/token
 
    Explore the [API Document](https://github.com/Shivampio/Node-IBM-i/blob/main/Node%20-%20IBM%20i.postman_collection.json) for better overview.
+   
+   Table Data - 
+   ![image](https://user-images.githubusercontent.com/60472008/153770179-7bd59561-24b0-4c35-a772-238dcc418162.png)
+
 ---
 ## Requirements
 
