@@ -1,11 +1,11 @@
 # Node IBMi
 
 ## Node IBMi - Demo developed by Shivam Lohiya.
-This is an demo application in which we connect `NodeJS` with `IBM i` using `itoolkit` package and create APIs aswell we call RPG and CL program. Also, I created one API by which i call work active Job. 
+This is an demo application in which we connect `NodeJS` with `IBM i` using `itoolkit` package and create APIs aswell we can call RPG and CL program. Also, I created one API by which i call work active Job. 
 
 I added `KeyCloak` as OAuth server for tokenized API. 
 
-Also, I integrate `Sawgger Stats` and `Swagger UI` for better uderstanding,
+Also, I integrate `Sawgger Stats` and `Swagger UI` for better understanding,
 
 ---
 ## Dependencies
@@ -23,14 +23,18 @@ Also, I integrate `Sawgger Stats` and `Swagger UI` for better uderstanding,
 ## Endpoints of API
 
 - Get All - http://localhost:3000/users
-- Get by Id - http://localhost:3000/users/10021
-- Insert(Post) Data - http://localhost:3000/users/10021
-- Delete Data - http://localhost:3000/users/1001
-- Update(Put) Data - http://localhost:3000/users/121
+- Get by Id - http://localhost:3000/users/10012
+- Insert(Post) Data - http://localhost:3000/users/10012
+- Delete Data - http://localhost:3000/users/10012
+- Update(Put) Data - http://localhost:3000/users/10012
 - Get Work Active Job - http://localhost:3000/wrkactjob
 - KeyCloak(Authorization) Token - http://localhost:8080/auth/realms/IBMi-Demo/protocol/openid-connect/token
 
    Explore the [API Document](https://github.com/Shivampio/Node-IBM-i/blob/main/Node%20-%20IBM%20i.postman_collection.json) for better overview.
+   
+   Table Data - 
+   ![image](https://user-images.githubusercontent.com/60472008/153770179-7bd59561-24b0-4c35-a772-238dcc418162.png)
+
 ---
 ## Requirements
 
