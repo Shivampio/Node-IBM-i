@@ -5,7 +5,7 @@ var _conn;
 function initConnection() {
     _conn = new Connection({
         transport: 'ssh',
-        transportOptions: { host: '129.40.98.1', username: 'shivam', password: 'welcome' }
+        transportOptions: { host: process.env.HOST, username: process.env.USERNSME, password: process.env.PASSWORD }
      });
 }
 

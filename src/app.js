@@ -9,7 +9,7 @@ const swStats = require('swagger-stats');
 const apiSpec = require('./swagger.json');
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -20,7 +20,7 @@ const swaggerOptions = {
             contact: {
                 name: "Shivam Lohiya"
             },
-            servers: ["http://localhost:3000"],
+            servers: [`http://localhost:${port}`],
         }
     },
     apis: ["./routers/*.js"]

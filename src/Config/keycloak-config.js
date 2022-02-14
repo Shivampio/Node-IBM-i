@@ -9,7 +9,7 @@ var keycloakConfig = {
     serverUrl: 'http://localhost:8080/auth',
     realm: 'IBMi-Demo',
     credentials: {
-        secret: 'HRTUvrop8FjVqXTpKW0ndBs2VqiG2kwU'
+        secret: process.env.KEYCLOAK_SECRET
     }
 };
 
